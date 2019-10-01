@@ -1,0 +1,50 @@
+Welcome to the next generation 5G and post 5G computing
+=======================================================
+
+.. automodule:: softgrid
+    :members:
+
+
+softgrid.Globals
+----------------
+.. automodule:: softgrid.Globals
+    :members:
+    :undoc-members:
+    :show-inheritance:
+    :noindex:
+
+
+softgrid.Core
+-------------
+.. automodule:: softgrid.Core
+    :members:
+    :undoc-members:
+    :show-inheritance:
+    :noindex:
+
+
+softgrid.Executors
+------------------
+.. automodule:: softgrid.Executors
+    :members:
+    :undoc-members:
+    :show-inheritance:
+    :noindex:
+
+
+softgrid.DDFS
+--------------
+.. automodule:: softgrid.DDFS
+    :members:
+    :undoc-members:
+    :show-inheritance:
+    :noindex:
+
+
+softgrid.Addons
+---------------
+.. automodule:: softgrid.Addons
+    :members:
+    :undoc-members:
+    :show-inheritance:
+    :noindex:
