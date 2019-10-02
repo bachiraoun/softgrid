@@ -65,7 +65,7 @@ and leverage the scallability of the resources real time.</p>
 <ol class="arabic simple">
 <li><strong>Orchestrator:</strong> This is the main executor of the grid and it has to be
 launched to create the grid. <em>ORCHESTRATOR PROCESS IS NOT SUPPOSED TO RUN
-HEAVY softgridATIONS BUT SHOULD BE USED FOR GRID TRANSACTION PURPOSES</em></li>
+HEAVY COMPUTATIONS BUT SHOULD BE USED FOR GRID TRANSACTION PURPOSES</em></li>
 <li><strong>Router:</strong> This is a simple routing executor that is used to split and
 bifurcate the grid and create multiple grid branches and nodes. <em>ROUTER
 PROCESS IS NOT SUPPOSED TO RUN HEAVY COMPUTATIONS BUT SHOULD BE USED
@@ -120,9 +120,9 @@ data availability</li>
 Using softgrid, connected IOT devices can communicate with the network towers
 to perform swift low latency computations while getting and pushing updates
 and computations to cloud services, at home personal devices or to a
-business data center. For tasks demanding heaving computation, grid nodes
+business data center. For heaving computation demanding tasks, grid nodes
 and connection bridges can be created and later on decommissioned and
-destroyed.</span></p>
+destroyed as needed.</span></p>
 </div>
 </div>
 <div class="section" id="to-do">
@@ -1152,8 +1152,7 @@ of the following key value pairs:<ul>
 <span class="n">status</span><span class="p">,</span> <span class="n">ss</span><span class="p">,</span><span class="n">fl</span> <span class="o">=</span> <span class="n">O</span><span class="o">.</span><span class="n">launch_worker</span><span class="p">(</span><span class="n">upgridUniqueName</span><span class="o">=</span><span class="n">O</span><span class="o">.</span><span class="n">gridUniqueName</span><span class="p">,</span>
                                 <span class="n">executorAddress</span><span class="o">=</span><span class="n">O</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
                                 <span class="n">executorKwargs</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-                                <span class="n">machineUser</span><span class="o">=</span><span class="s1">&#39;some_user&#39;</span><span class="p">,</span>
-                                <span class="n">machineExecutable</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">)</span>
+                                <span class="n">machineUser</span><span class="o">=</span><span class="s1">&#39;some_user&#39;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">status</span><span class="p">:</span>
      <span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 
@@ -1322,8 +1321,7 @@ receivers is returned.</li>
 <span class="n">status</span><span class="p">,</span> <span class="n">routers</span><span class="p">,</span> <span class="n">fl</span> <span class="o">=</span> <span class="n">O</span><span class="o">.</span><span class="n">launch_router</span><span class="p">(</span><span class="n">upgridUniqueName</span><span class="o">=</span><span class="n">O</span><span class="o">.</span><span class="n">gridUniqueName</span><span class="p">,</span>
                                       <span class="n">executorAddress</span><span class="o">=</span><span class="p">[</span><span class="n">O</span><span class="o">.</span><span class="n">address</span><span class="p">]</span><span class="o">*</span><span class="mi">4</span><span class="p">,</span>
                                       <span class="n">executorKwargs</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-                                      <span class="n">machineUser</span><span class="o">=</span><span class="s1">&#39;some_user&#39;</span><span class="p">,</span>
-                                      <span class="n">machineExecutable</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">)</span>
+                                      <span class="n">machineUser</span><span class="o">=</span><span class="s1">&#39;some_user&#39;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">status</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 
@@ -1331,8 +1329,7 @@ receivers is returned.</li>
 <span class="n">status</span><span class="p">,</span> <span class="n">managers</span><span class="p">,</span> <span class="n">fl</span> <span class="o">=</span> <span class="n">O</span><span class="o">.</span><span class="n">launch_manager</span><span class="p">(</span><span class="n">upgridUniqueName</span><span class="o">=</span><span class="n">routers</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
                                         <span class="n">executorAddress</span><span class="o">=</span><span class="p">[</span><span class="n">O</span><span class="o">.</span><span class="n">address</span><span class="p">]</span><span class="o">*</span><span class="mi">4</span><span class="p">,</span>
                                         <span class="n">executorKwargs</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-                                        <span class="n">machineUser</span><span class="o">=</span><span class="s1">&#39;some_user&#39;</span><span class="p">,</span>
-                                        <span class="n">machineExecutable</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">)</span>
+                                        <span class="n">machineUser</span><span class="o">=</span><span class="s1">&#39;some_user&#39;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">status</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 
@@ -1341,8 +1338,7 @@ receivers is returned.</li>
 <span class="n">status</span><span class="p">,</span> <span class="n">workers</span><span class="p">,</span> <span class="n">fl</span> <span class="o">=</span> <span class="n">O</span><span class="o">.</span><span class="n">launch_worker</span><span class="p">(</span><span class="n">upgridUniqueName</span><span class="o">=</span><span class="n">managers</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
                                       <span class="n">executorAddress</span><span class="o">=</span><span class="p">[</span><span class="n">O</span><span class="o">.</span><span class="n">address</span><span class="p">]</span><span class="o">*</span><span class="n">ncpu</span><span class="p">,</span>
                                       <span class="n">executorKwargs</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-                                      <span class="n">machineUser</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;some_user&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">ncpu</span><span class="p">,</span>
-                                      <span class="n">machineExecutable</span><span class="o">=</span><span class="p">[</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">]</span><span class="o">*</span><span class="n">ncpu</span><span class="p">)</span>
+                                      <span class="n">machineUser</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;some_user&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">ncpu</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">status</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 
@@ -1413,8 +1409,7 @@ stack</li>
 <span class="n">status</span><span class="p">,</span> <span class="n">workers</span><span class="p">,</span> <span class="n">fl</span> <span class="o">=</span> <span class="n">O</span><span class="o">.</span><span class="n">launch_worker</span><span class="p">(</span><span class="n">upgridUniqueName</span><span class="o">=</span><span class="n">O</span><span class="o">.</span><span class="n">gridUniqueName</span><span class="p">,</span>
                                       <span class="n">executorAddress</span><span class="o">=</span><span class="p">[</span><span class="n">O</span><span class="o">.</span><span class="n">address</span><span class="p">]</span><span class="o">*</span><span class="n">ncpu</span><span class="p">,</span>
                                       <span class="n">executorKwargs</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-                                      <span class="n">machineUser</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;some_user&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">ncpu</span><span class="p">,</span>
-                                      <span class="n">machineExecutable</span><span class="o">=</span><span class="p">[</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">]</span><span class="o">*</span><span class="n">ncpu</span><span class="p">)</span>
+                                      <span class="n">machineUser</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;some_user&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">ncpu</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">status</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 
@@ -1491,8 +1486,7 @@ arguments.</li>
 <span class="n">status</span><span class="p">,</span> <span class="n">routers</span><span class="p">,</span><span class="n">fl</span> <span class="o">=</span> <span class="n">O</span><span class="o">.</span><span class="n">launch_router</span><span class="p">(</span><span class="n">upgridUniqueName</span><span class="o">=</span><span class="n">O</span><span class="o">.</span><span class="n">gridUniqueName</span><span class="p">,</span>
                                      <span class="n">executorAddress</span><span class="o">=</span><span class="p">[</span><span class="n">O</span><span class="o">.</span><span class="n">address</span><span class="p">]</span><span class="o">*</span><span class="mi">6</span><span class="p">,</span>
                                      <span class="n">executorKwargs</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-                                     <span class="n">machineUser</span><span class="o">=</span><span class="s1">&#39;some_user&#39;</span><span class="p">,</span>
-                                     <span class="n">machineExecutable</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">)</span>
+                                     <span class="n">machineUser</span><span class="o">=</span><span class="s1">&#39;some_user&#39;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">status</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 
@@ -1500,8 +1494,7 @@ arguments.</li>
 <span class="n">status</span><span class="p">,</span> <span class="n">managers</span><span class="p">,</span> <span class="n">fl</span> <span class="o">=</span> <span class="n">O</span><span class="o">.</span><span class="n">launch_manager</span><span class="p">(</span><span class="n">upgridUniqueName</span><span class="o">=</span><span class="n">routers</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
                                         <span class="n">executorAddress</span><span class="o">=</span><span class="p">[</span><span class="n">O</span><span class="o">.</span><span class="n">address</span><span class="p">]</span><span class="o">*</span><span class="mi">6</span><span class="p">,</span>
                                         <span class="n">executorKwargs</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-                                        <span class="n">machineUser</span><span class="o">=</span><span class="s1">&#39;some_user&#39;</span><span class="p">,</span>
-                                        <span class="n">machineExecutable</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">)</span>
+                                        <span class="n">machineUser</span><span class="o">=</span><span class="s1">&#39;some_user&#39;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">status</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 
@@ -1510,7 +1503,7 @@ arguments.</li>
 <span class="n">status</span><span class="p">,</span> <span class="n">workers</span><span class="p">,</span> <span class="n">fl</span> <span class="o">=</span> <span class="n">O</span><span class="o">.</span><span class="n">launch_worker</span><span class="p">(</span><span class="n">upgridUniqueName</span><span class="o">=</span><span class="n">O</span><span class="o">.</span><span class="n">gridUniqueName</span><span class="p">,</span>
                                       <span class="n">executorAddress</span><span class="o">=</span><span class="p">[</span><span class="n">O</span><span class="o">.</span><span class="n">address</span><span class="p">]</span><span class="o">*</span><span class="n">ncpu</span><span class="p">,</span>
                                       <span class="n">executorKwargs</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-                                      <span class="n">machineUser</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;some_user&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">ncpu</span><span class="p">,</span> <span class="n">machineExecutable</span><span class="o">=</span><span class="p">[</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">]</span><span class="o">*</span><span class="n">ncpu</span><span class="p">)</span>
+                                      <span class="n">machineUser</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;some_user&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">ncpu</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">status</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 
@@ -1582,9 +1575,9 @@ a list of unique strings</li>
 request. This can be a message or any other data that a responder
 might need to answer the request. If responder is a multiple items
 list, request must be a list of the same size</li>
-<li>timeout (int, float, list): number of seconds to wait for a
-response. If list is given it must be of the same size as
-responder</li>
+<li>timeout (None, int, float, list): number of seconds to wait for a
+response. If None is given then Globals.maxint is set. If list
+is given it must be of the same size as responder</li>
 <li>allowedResponders (None, string, list): allowed executors
 that are allowed to respond to the given request. If None, any
 executor response will be accepted as long as the password is
@@ -1634,8 +1627,7 @@ to stop waiting for requests.</li>
 <span class="n">status</span><span class="p">,</span> <span class="n">workers</span><span class="p">,</span> <span class="n">fl</span> <span class="o">=</span> <span class="n">O</span><span class="o">.</span><span class="n">launch_worker</span><span class="p">(</span><span class="n">upgridUniqueName</span><span class="o">=</span><span class="n">O</span><span class="o">.</span><span class="n">gridUniqueName</span><span class="p">,</span>
                                       <span class="n">executorAddress</span><span class="o">=</span><span class="p">[</span><span class="n">O</span><span class="o">.</span><span class="n">address</span><span class="p">]</span><span class="o">*</span><span class="n">ncpu</span><span class="p">,</span>
                                       <span class="n">executorKwargs</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-                                      <span class="n">machineUser</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;some_user&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">ncpu</span><span class="p">,</span>
-                                      <span class="n">machineExecutable</span><span class="o">=</span><span class="p">[</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">]</span><span class="o">*</span><span class="n">ncpu</span><span class="p">)</span>
+                                      <span class="n">machineUser</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;some_user&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">ncpu</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">status</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 
@@ -1785,8 +1777,7 @@ In general this can be the original request or an updated request</li>
 <span class="n">status</span><span class="p">,</span> <span class="n">workers</span><span class="p">,</span><span class="n">_</span> <span class="o">=</span> <span class="n">O</span><span class="o">.</span><span class="n">launch_worker</span><span class="p">(</span><span class="n">upgridUniqueName</span><span class="o">=</span><span class="n">O</span><span class="o">.</span><span class="n">gridUniqueName</span><span class="p">,</span>
                                     <span class="n">executorAddress</span><span class="o">=</span><span class="p">[</span><span class="n">O</span><span class="o">.</span><span class="n">address</span><span class="p">]</span><span class="o">*</span><span class="mi">10</span><span class="p">,</span>
                                     <span class="n">executorKwargs</span><span class="o">=</span><span class="n">executorKwargs</span><span class="p">,</span>
-                                    <span class="n">machineUser</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;some_user&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">10</span><span class="p">,</span>
-                                    <span class="n">machineExecutable</span><span class="o">=</span><span class="p">[</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">]</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span>
+                                    <span class="n">machineUser</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;some_user&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">status</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 
@@ -1937,7 +1928,7 @@ reaching the responders</span></p>
 
 <dl class="method">
 <dt>
-<code class="descname">transfer_response_to_requester</code><span class="sig-paren">(</span><em>requester</em>, <em>password</em>, <em>response</em><span class="sig-paren">)</span></dt>
+<code class="descname">transfer_response_to_requester</code><span class="sig-paren">(</span><em>requester</em>, <em>password</em>, <em>response</em>, <em>errorRaise=False</em>, <em>errorLog=True</em><span class="sig-paren">)</span></dt>
 <dd><p>Transfer response to a request</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1950,6 +1941,12 @@ of requesters.</li>
 matching the number of requesters</li>
 <li>response (object, list): the response to the request. If list, it
 must be of the same length as requester list</li>
+<li>errorRaise (boolean, list): whether to raise an error if
+request does not exist or any other error occured while looping
+responses to requesters</li>
+<li>errorLog (boolean, list): whether to log if request does not
+exist or any other error occured while looping responses to
+requesters</li>
 </ol>
 </td>
 </tr>
@@ -2027,6 +2024,52 @@ value</li>
 </tr>
 </tbody>
 </table>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">release_request</code><span class="sig-paren">(</span><em>password</em><span class="sig-paren">)</span></dt>
+<dd><p>Release sent or received request for response from this executor.
+This should be used when an old request with a long timeout is no
+more needed or when a response is received but no need to collect it
+anymore or when a request for response password needs to be recycled</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ol class="first last arabic simple">
+<li>password (string, list): request for response password. This
+can be a unique string password or a list of passwords or
+a list of passwords of the same length as responder list</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descname">transfer_release_request</code><span class="sig-paren">(</span><em>gun</em>, <em>password</em><span class="sig-paren">)</span></dt>
+<dd><p>Release sent or received request for response from this or remote
+executors. This should be used when an old request with a long timeout
+is no more needed or when a request for response password needs to be
+recycled</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ol class="first last arabic simple">
+<li>gun (string, list): executor grid unique name or a list
+of executors grid unique name.</li>
+<li>password (string, list): request for response password. This
+can be a unique string password or a list of passwords or
+a list of passwords of the same length as responder list</li>
+</ol>
 </td>
 </tr>
 </tbody>
@@ -2512,8 +2555,7 @@ happened</li>
 <span class="n">status</span><span class="p">,</span> <span class="n">ss</span><span class="p">,</span><span class="n">fl</span> <span class="o">=</span> <span class="n">O</span><span class="o">.</span><span class="n">launch_worker</span><span class="p">(</span><span class="n">upgridUniqueName</span><span class="o">=</span><span class="n">O</span><span class="o">.</span><span class="n">gridUniqueName</span><span class="p">,</span>
                                  <span class="n">executorAddress</span><span class="o">=</span><span class="p">[</span><span class="n">O</span><span class="o">.</span><span class="n">address</span><span class="p">]</span><span class="o">*</span><span class="n">ncpu</span><span class="p">,</span>
                                  <span class="n">executorKwargs</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-                                 <span class="n">machineUser</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;some_user&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">ncpu</span><span class="p">,</span>
-                                 <span class="n">machineExecutable</span><span class="o">=</span><span class="p">[</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">]</span><span class="o">*</span><span class="n">ncpu</span><span class="p">)</span>
+                                 <span class="n">machineUser</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;some_user&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">ncpu</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">status</span><span class="p">:</span>
      <span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 
@@ -2601,7 +2643,7 @@ router, 35 manager and 160 worker.</span></p>
 <p>In this class all remote and local launch definitons are implemented.</p>
 <dl class="method">
 <dt>
-<code class="descname">launch_router</code><span class="sig-paren">(</span><em>upgridUniqueName</em>, <em>executorAddress</em>, <em>executorKwargs=None</em>, <em>machineUser=None</em>, <em>machineExecutable='python'</em>, <em>timeout=10</em><span class="sig-paren">)</span></dt>
+<code class="descname">launch_router</code><span class="sig-paren">(</span><em>upgridUniqueName</em>, <em>executorAddress</em>, <em>executorKwargs=None</em>, <em>machineUser=None</em>, <em>machineExecutable=None</em>, <em>timeout=10</em>, <em>retry=5</em><span class="sig-paren">)</span></dt>
 <dd><p>Launch router(s) on the grid. When given arguments are lists, multiple
 routers will be launched.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -2624,9 +2666,11 @@ and all other arguments must be lists of the same size.</li>
 <li>machineUser (string, list): Executor machine user name.
 If list is given, all items must be strings of user names
 and all other arguments must be lists of the same size.</li>
-<li>machineExecutable (string, list): Python machine executable.
-If list is given, all items must be strings of python executables
-and all other arguments must be lists of the same size.</li>
+<li>machineExecutable (None, string, list): Python machine
+executable path or alias. If None is given, or a None item
+is given in the list then it’s replaced with registered
+grid machines executable path if machine is registered or
+simply ‘python’ alias.</li>
 <li>timeout (number): timeout for launching routers. If exceeded
 remaining not regiestered routers will forcefully fail to
 launch.</li>
@@ -2649,8 +2693,7 @@ launch.</li>
 <span class="n">status</span><span class="p">,</span> <span class="n">routers</span><span class="p">,</span><span class="n">fl</span> <span class="o">=</span> <span class="n">O</span><span class="o">.</span><span class="n">launch_router</span><span class="p">(</span><span class="n">upgridUniqueName</span><span class="o">=</span><span class="n">O</span><span class="o">.</span><span class="n">gridUniqueName</span><span class="p">,</span>
                                      <span class="n">executorAddress</span><span class="o">=</span><span class="p">[</span><span class="n">O</span><span class="o">.</span><span class="n">address</span><span class="p">]</span><span class="o">*</span><span class="mi">4</span><span class="p">,</span>
                                      <span class="n">executorKwargs</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-                                     <span class="n">machineUser</span><span class="o">=</span><span class="s1">&#39;some_user&#39;</span><span class="p">,</span>
-                                     <span class="n">machineExecutable</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">)</span>
+                                     <span class="n">machineUser</span><span class="o">=</span><span class="s1">&#39;some_user&#39;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">status</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 </pre></div>
@@ -2659,7 +2702,7 @@ launch.</li>
 
 <dl class="method">
 <dt>
-<code class="descname">launch_manager</code><span class="sig-paren">(</span><em>upgridUniqueName</em>, <em>executorAddress</em>, <em>executorKwargs=None</em>, <em>machineUser=None</em>, <em>machineExecutable='python'</em>, <em>timeout=10</em><span class="sig-paren">)</span></dt>
+<code class="descname">launch_manager</code><span class="sig-paren">(</span><em>upgridUniqueName</em>, <em>executorAddress</em>, <em>executorKwargs=None</em>, <em>machineUser=None</em>, <em>machineExecutable=None</em>, <em>timeout=10</em>, <em>retry=5</em><span class="sig-paren">)</span></dt>
 <dd><p>Launch manager(s) on the grid. When given arguments are lists, multiple
 managers will be launched.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -2682,9 +2725,11 @@ and all other arguments must be lists of the same size.</li>
 <li>machineUser (string, list): Executor machine user name.
 If list is given, all items must be strings of user names
 and all other arguments must be lists of the same size.</li>
-<li>machineExecutable (string, list): Python machine executable.
-If list is given, all items must be strings of python executables
-and all other arguments must be lists of the same size.</li>
+<li>machineExecutable (None, string, list): Python machine
+executable path or alias. If None is given, or a None item
+is given in the list then it’s replaced with registered
+grid machines executable path if machine is registered or
+simply ‘python’ alias.</li>
 <li>timeout (number): timeout for launching managers. If exceeded
 remaining not regiestered managers will forcefully fail to
 launch.</li>
@@ -2707,8 +2752,7 @@ launch.</li>
 <span class="n">status</span><span class="p">,</span> <span class="n">managers</span><span class="p">,</span><span class="n">fl</span> <span class="o">=</span> <span class="n">O</span><span class="o">.</span><span class="n">launch_manager</span><span class="p">(</span><span class="n">upgridUniqueName</span><span class="o">=</span><span class="n">O</span><span class="o">.</span><span class="n">gridUniqueName</span><span class="p">,</span>
                                        <span class="n">executorAddress</span><span class="o">=</span><span class="n">O</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
                                        <span class="n">executorKwargs</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-                                       <span class="n">machineUser</span><span class="o">=</span><span class="s1">&#39;some_user&#39;</span><span class="p">,</span>
-                                       <span class="n">machineExecutable</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">)</span>
+                                       <span class="n">machineUser</span><span class="o">=</span><span class="s1">&#39;some_user&#39;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">status</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 </pre></div>
@@ -2717,7 +2761,7 @@ launch.</li>
 
 <dl class="method">
 <dt>
-<code class="descname">launch_worker</code><span class="sig-paren">(</span><em>upgridUniqueName</em>, <em>executorAddress</em>, <em>executorKwargs=None</em>, <em>machineUser=None</em>, <em>machineExecutable='python'</em>, <em>timeout=10</em>, <em>retry=5</em><span class="sig-paren">)</span></dt>
+<code class="descname">launch_worker</code><span class="sig-paren">(</span><em>upgridUniqueName</em>, <em>executorAddress</em>, <em>executorKwargs=None</em>, <em>machineUser=None</em>, <em>machineExecutable=None</em>, <em>timeout=10</em>, <em>retry=5</em><span class="sig-paren">)</span></dt>
 <dd><p>Launch worker(s) on the grid. When given arguments are lists, multiple
 worker will be launched.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -2740,9 +2784,11 @@ and all other arguments must be lists of the same size.</li>
 <li>machineUser (string, list): Executor machine user name.
 If list is given, all items must be strings of user names
 and all other arguments must be lists of the same size.</li>
-<li>machineExecutable (string, list): Python machine executable.
-If list is given, all items must be strings of python executables
-and all other arguments must be lists of the same size.</li>
+<li>machineExecutable (None, string, list): Python machine
+executable path or alias. If None is given, or a None item
+is given in the list then it’s replaced with registered
+grid machines executable path if machine is registered or
+simply ‘python’ alias.</li>
 <li>timeout (number): timeout for launching workers. If exceeded
 remaining not regiestered workers will forcefully fail to
 launch.</li>
@@ -2765,8 +2811,7 @@ launch.</li>
 <span class="n">status</span><span class="p">,</span> <span class="n">workers</span><span class="p">,</span> <span class="n">fl</span> <span class="o">=</span> <span class="n">O</span><span class="o">.</span><span class="n">launch_worker</span><span class="p">(</span><span class="n">upgridUniqueName</span><span class="o">=</span><span class="n">O</span><span class="o">.</span><span class="n">gridUniqueName</span><span class="p">,</span>
                                       <span class="n">executorAddress</span><span class="o">=</span><span class="p">[</span><span class="n">O</span><span class="o">.</span><span class="n">address</span><span class="p">]</span><span class="o">*</span><span class="n">ncpu</span><span class="p">,</span>
                                       <span class="n">executorKwargs</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-                                      <span class="n">machineUser</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;some_user&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">ncpu</span><span class="p">,</span>
-                                      <span class="n">machineExecutable</span><span class="o">=</span><span class="p">[</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">]</span><span class="o">*</span><span class="n">ncpu</span><span class="p">)</span>
+                                      <span class="n">machineUser</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;some_user&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">ncpu</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">status</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 </pre></div>
@@ -2959,14 +3004,12 @@ to build the connection bridge from.</li>
 <span class="n">status</span><span class="p">,</span><span class="n">managers</span><span class="p">,</span><span class="n">_</span> <span class="o">=</span> <span class="n">O</span><span class="o">.</span><span class="n">launch_manager</span><span class="p">(</span><span class="n">upgridUniqueName</span><span class="o">=</span><span class="n">O</span><span class="o">.</span><span class="n">gridUniqueName</span><span class="p">,</span>
                                      <span class="n">executorAddress</span><span class="o">=</span><span class="p">[</span><span class="n">O</span><span class="o">.</span><span class="n">address</span><span class="p">]</span><span class="o">*</span><span class="mi">3</span><span class="p">,</span>
                                      <span class="n">machineUser</span><span class="o">=</span><span class="s1">&#39;some_user&#39;</span><span class="p">,</span>
-                                     <span class="n">machineExecutable</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">,</span>
                                      <span class="n">timeout</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 
 <span class="c1">## launch 5 workers on attached to each manager for a total of 15 workers</span>
 <span class="n">status</span><span class="p">,</span><span class="n">workers</span><span class="p">,</span><span class="n">_</span> <span class="o">=</span> <span class="n">O</span><span class="o">.</span><span class="n">launch_worker</span><span class="p">(</span><span class="n">upgridUniqueName</span><span class="o">=</span><span class="n">managers</span><span class="o">*</span><span class="mi">5</span><span class="p">,</span>
                                    <span class="n">executorAddress</span><span class="o">=</span><span class="p">[</span><span class="n">O</span><span class="o">.</span><span class="n">address</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">managers</span><span class="p">)</span><span class="o">*</span><span class="mi">5</span><span class="p">,</span>
                                    <span class="n">machineUser</span><span class="o">=</span><span class="s1">&#39;some_user&#39;</span><span class="p">,</span>
-                                   <span class="n">machineExecutable</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">,</span>
                                    <span class="n">timeout</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 
 <span class="c1">## build connection bridges between workers</span>
@@ -3229,7 +3272,7 @@ If notsuccessfully placed, None is the value.</li>
 <span class="n">status</span><span class="p">,</span> <span class="n">ss</span><span class="p">,</span><span class="n">fl</span> <span class="o">=</span> <span class="n">O</span><span class="o">.</span><span class="n">launch_worker</span><span class="p">(</span><span class="n">upgridUniqueName</span><span class="o">=</span><span class="n">O</span><span class="o">.</span><span class="n">gridUniqueName</span><span class="p">,</span>
                                 <span class="n">executorAddress</span><span class="o">=</span><span class="p">[</span><span class="n">O</span><span class="o">.</span><span class="n">address</span><span class="p">]</span><span class="o">*</span><span class="n">ncpu</span><span class="p">,</span>
                                 <span class="n">executorKwargs</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-                                <span class="n">machineUser</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;some_user&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">ncpu</span><span class="p">,</span> <span class="n">machineExecutable</span><span class="o">=</span><span class="p">[</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">]</span><span class="o">*</span><span class="n">ncpu</span><span class="p">)</span>
+                                <span class="n">machineUser</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;some_user&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">ncpu</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">status</span><span class="p">:</span>
     <span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 
