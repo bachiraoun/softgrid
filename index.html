@@ -77,9 +77,9 @@ GRID TRANSACTION PURPOSES</em></li>
 <li><strong>Worker:</strong> This is the worker of the grid where heavy computations should be
 made.</li>
 <li><strong>gridUniqueName:</strong> Every executor when launched and connected to the grid
-will get attributed its own and unique grid name which is its grig unique
-name that can be accessed using gridUniqueName property of the executor
-instance. A gridUniqueName is afterall a formatted string of the following
+will get attributed its own and unique grid name which can be accessed using
+gridUniqueName property of the executor instance.
+A gridUniqueName is afterall a formatted string of the following
 format: “role|name&#64;address[pid]:port” where role is the executor type
 (orchestrator, router, manager, etc.), name is the executor name given by
 the user upon instanciation, address is the machine ip address, pid is
@@ -124,24 +124,6 @@ business data center. For heaving computation demanding tasks, grid nodes
 and connection bridges can be created and later on decommissioned and
 destroyed as needed.</span></p>
 </div>
-</div>
-<div class="section" id="to-do">
-<h2>TO DO:<a class="headerlink" href="#to-do" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><ul class="simple">
-<li><strong>UserEdgeExecutor:</strong> A special executor that allow other users to connect to
-the grid to particular end points other than the orchestrator which is meant
-to me for admin purposes</li>
-<li><strong>GridObject:</strong> A grid object is any object that is seen by all executor and that
-is guaranteed up to date to all grid executors. It will act like any object
-running on a single core</li>
-<li><strong>GridIsland:</strong> Consists of special Executors cross connected that host GridObjects
-and manage responding to all executors to getting and updating GridObjects</li>
-<li><strong>OrchestratorShaddow:</strong> special Orchestrator implementation that will take over
-the grid if main Orchestrator execution drop for any reason.</li>
-<li><strong>DDFS:</strong> Finish implementing the Distributed Data File System</li>
-</ul>
-</div></blockquote>
 <hr class="docutils" />
 <dl class="function">
 <dt id="softgrid.get_version">
@@ -228,7 +210,7 @@ kwargs can be anything other than __init__ arguments.</li>
 <dt>
 <em class="property">class </em><code class="descclassname">softgrid.Core.</code><code class="descname">GridBase</code></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>GridBase declares and handles all general executors’ properties.
+<p>GridBase declares and handles all general properties of the excutor.
 Some of the defined properties are only defined in GridBase but must be
 handled in GridBase children. All os signal hadlers are defined
 in GridBase. GridBase instanciation is forbidden.</p>
@@ -253,7 +235,8 @@ in GridBase. GridBase instanciation is forbidden.</p>
 <dl class="attribute">
 <dt>
 <code class="descname">role</code></dt>
-<dd></dd></dl>
+<dd><p>Excuctor role which can be Orchestrator, Router, Manger, etc.</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt>
@@ -270,13 +253,13 @@ in GridBase. GridBase instanciation is forbidden.</p>
 <dl class="attribute">
 <dt>
 <code class="descname">port</code></dt>
-<dd><p>Listener port number</p>
+<dd><p>Executor communication port number</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt>
 <code class="descname">portFetch</code></dt>
-<dd><p>Whether to fetch for available port</p>
+<dd><p>Whether to smartly fetch for available port</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -288,7 +271,7 @@ in GridBase. GridBase instanciation is forbidden.</p>
 <dl class="attribute">
 <dt>
 <code class="descname">name</code></dt>
-<dd><p>Object name</p>
+<dd><p>Executor name given by user</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -1556,7 +1539,7 @@ over the grid. This is implemented using transfer request methods and
 wait for request and wait for response methods.</p>
 <dl class="method">
 <dt>
-<code class="descname">transfer_request_to_responder</code><span class="sig-paren">(</span><em>responder</em>, <em>password</em>, <em>request</em>, <em>timeout=3600</em>, <em>allowedResponders=None</em>, <em>register=True</em><span class="sig-paren">)</span></dt>
+<code class="descname">transfer_request_to_responder</code><span class="sig-paren">(</span><em>responder</em>, <em>password</em>, <em>request</em>, <em>timeout=3600</em>, <em>allowedResponders=None</em>, <em>register=True</em>, <em>errorRaise=False</em>, <em>errorLog=True</em><span class="sig-paren">)</span></dt>
 <dd><p>Transfer a request for a response to responder executor. This can be
 used as an execution hold for synchronous or asynchronous grid
 computation until a response is received from a responder grid executor</p>
@@ -1586,6 +1569,10 @@ correct.</li>
 tracking. If False, request won’t ge registered nor tracked
 for response. This is useful as a last request to responders
 to stop waiting for requests.</li>
+<li>errorRaise (boolean, list): whether to raise an error if when
+transfering a request a error occured</li>
+<li>errorLog (boolean, list): whether to log if request does
+generate an error</li>
 </ol>
 </td>
 </tr>
@@ -2036,7 +2023,9 @@ value</li>
 <dd><p>Release sent or received request for response from this executor.
 This should be used when an old request with a long timeout is no
 more needed or when a response is received but no need to collect it
-anymore or when a request for response password needs to be recycled</p>
+anymore or when a request for response password needs to be recycled.
+This method will return running ‘wait_for_request’ and
+‘wait_for_response’ blocking methods</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -2058,7 +2047,8 @@ a list of passwords of the same length as responder list</li>
 <dd><p>Release sent or received request for response from this or remote
 executors. This should be used when an old request with a long timeout
 is no more needed or when a request for response password needs to be
-recycled</p>
+recycled. This method will return running ‘wait_for_request’ and
+‘wait_for_response’ blocking methods</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -3537,15 +3527,18 @@ executors grid unique name and values are list of</li>
 <dt>
 <em class="property">class </em><code class="descclassname">softgrid.Executors.</code><code class="descname">Worker</code><span class="sig-paren">(</span><em>address=None</em>, <em>port=5001</em>, <em>relaunch=True</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">softgrid.Core.ExecutorBase</span></code></p>
+<p>Worker executor implementation</p>
 <dl class="attribute">
 <dt>
 <code class="descname">isWorker</code></dt>
-<dd></dd></dl>
+<dd><p>Whether this is a worker executor. This will always return True</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt>
 <code class="descname">role</code></dt>
-<dd></dd></dl>
+<dd><p>This executor role, this will return ‘worker’</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -3553,20 +3546,25 @@ executors grid unique name and values are list of</li>
 <dt>
 <em class="property">class </em><code class="descclassname">softgrid.Executors.</code><code class="descname">Manager</code><span class="sig-paren">(</span><em>address=None</em>, <em>port=5000</em>, <em>relaunch=10</em>, <em>allowExecutingUDF=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">softgrid.Core.ExecutorBase</span></code></p>
+<p>Manager executor implementation</p>
 <dl class="attribute">
 <dt>
 <code class="descname">launchScripts</code></dt>
-<dd></dd></dl>
+<dd><p>Helper property that prints launching script
+of downgrids for this Manager instance</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt>
 <code class="descname">isManager</code></dt>
-<dd></dd></dl>
+<dd><p>Whether this is a manager executor. This will always return True</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt>
 <code class="descname">role</code></dt>
-<dd></dd></dl>
+<dd><p>This executor role, this will return ‘manager’</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -3574,20 +3572,25 @@ executors grid unique name and values are list of</li>
 <dt>
 <em class="property">class </em><code class="descclassname">softgrid.Executors.</code><code class="descname">Router</code><span class="sig-paren">(</span><em>address=None</em>, <em>port=5001</em>, <em>relaunch=5</em>, <em>allowExecutingUDF=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">softgrid.Core.ExecutorBase</span></code></p>
+<p>Router executor implementation</p>
 <dl class="attribute">
 <dt>
 <code class="descname">launchScripts</code></dt>
-<dd></dd></dl>
+<dd><p>Helper property that prints launching script
+of downgrids for this Router instance</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt>
 <code class="descname">isRouter</code></dt>
-<dd></dd></dl>
+<dd><p>Whether this is a router executor. This will always return True</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt>
 <code class="descname">role</code></dt>
-<dd></dd></dl>
+<dd><p>This executor role, this will return ‘router’</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -3595,26 +3598,32 @@ executors grid unique name and values are list of</li>
 <dt>
 <em class="property">class </em><code class="descclassname">softgrid.Executors.</code><code class="descname">Orchestrator</code><span class="sig-paren">(</span><em>address=None</em>, <em>port=5000</em>, <em>allowExecutingUDF=False</em>, <em>heartMonitorFrequency=10</em>, <em>heartbeatTolerance=60</em>, <em>acceptManagers=None</em>, <em>acceptWorkers=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">softgrid.Core.ExecutorBase</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">softgrid.Core.TaskScheduler</span></code></p>
-<p>address is ip address of current machine in the network</p>
+<p>Orchestrator executor implementation</p>
 <dl class="attribute">
 <dt>
 <code class="descname">launchScripts</code></dt>
-<dd></dd></dl>
+<dd><p>Helper property that prints launching script
+of downgrids for this Router instance</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt>
 <code class="descname">role</code></dt>
-<dd></dd></dl>
+<dd><p>This executor role, this will return ‘orchestrator’</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt>
 <code class="descname">isOrchestrator</code></dt>
-<dd></dd></dl>
+<dd><p>Whether this is a orchestrator executor. This will always return True</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt>
 <code class="descname">gridPath</code></dt>
-<dd></dd></dl>
+<dd><p>overload to gridpath property that returns a list of item
+which is the orchestrator gridUniqueName</p>
+</dd></dl>
 
 <dl class="method">
 <dt>
